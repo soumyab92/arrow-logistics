@@ -1,0 +1,2405 @@
+/* ==========================================================================
+   ARROW LOGISTICS HERO SECTION STYLES
+   ========================================================================== */
+
+/* --- Design Tokens & Variables --- */
+:root {
+    /* Color Palette */
+    --primary-orange: #F35325;
+    --primary-orange-end: #E63E11;
+    --orange-gradient: linear-gradient(135deg, #F35325 0%, #E63E11 100%);
+    --orange-glow: rgba(243, 83, 37, 0.4);
+    
+    --dark-base: #0B1118;
+    --dark-surface: #121A24;
+    --surface-glass: rgba(18, 26, 36, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    
+    --white: #ffffff;
+    --light-grey: #F3F5F7;
+    --border-grey: #E2E8F0;
+    
+    --text-main: #0B1118;
+    --text-light: #F3F5F7;
+    --text-muted: #8A94A6;
+    
+    /* Typography */
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Shadows & Borders */
+    --shadow-deep: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+    --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 12px 24px -6px var(--orange-glow);
+    --radius-pill: 9999px;
+    --radius-card: 20px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Base & Reset Styles --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* No CSS smooth scrolling: it fights ScrollTrigger's pin scroll corrections
+       and makes pinned sections jitter. */
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--dark-base);
+    color: var(--text-light);
+    /* clip, not hidden: overflow-x:hidden turns body into a scroll container,
+       which breaks ScrollTrigger pin offset measurements. */
+    overflow-x: clip;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+button, input, select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* --- Hero Wrapper & Background --- */
+.hero-wrapper {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: 
+        linear-gradient(90deg, rgba(8, 12, 18, 0.75) 0%, rgba(8, 12, 18, 0.4) 45%, rgba(8, 12, 18, 0.1) 100%), 
+        url('assets/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* --- Header & Navigation Bar --- */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 1.25rem 0;
+    background-color: var(--surface-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--transition-normal), padding var(--transition-normal), background-color var(--transition-normal);
+    will-change: transform;
+}
+
+.header.scrolled {
+    padding: 0.75rem 0;
+}
+
+/* Hidden while scrolling down; slides straight back on any upward scroll.
+   Transform rather than top/display so it never triggers layout, and never
+   costs ScrollTrigger a measurement mid-pin. */
+.header.hidden {
+    transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header {
+        transition: none;
+    }
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 101;
+}
+
+.logo-mark {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+    transition: var(--transition-normal);
+}
+
+.logo:hover .logo-mark {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+/* Navigation Menu */
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    position: relative;
+}
+
+.nav-link:hover, 
+.nav-link.active {
+    color: var(--white);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--orange-gradient);
+    border-radius: var(--radius-pill);
+}
+
+.dropdown-chevron {
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover .dropdown-chevron {
+    transform: translateY(1px);
+}
+
+/* Dropdown Menu styling */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: var(--dark-surface);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 0.75rem 0;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: var(--shadow-deep);
+    transition: var(--transition-normal);
+    pointer-events: none;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+}
+
+.dropdown-link:hover {
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.04);
+    padding-left: 1.5rem;
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* Mobile Drawer Actions (Hidden on Desktop) */
+.header-actions-mobile {
+    display: none;
+}
+
+/* Phone Badge */
+.phone-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+    background-color: var(--surface-glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--radius-pill);
+    transition: var(--transition-normal);
+}
+
+.phone-badge:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(18, 26, 36, 0.85);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.phone-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    color: var(--primary-orange);
+    transition: var(--transition-normal);
+}
+
+.phone-badge:hover .phone-icon-wrapper {
+    background-color: var(--primary-orange);
+    color: var(--white);
+}
+
+.phone-number {
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.2px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.938rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-pill);
+    transition: var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-white-capsule {
+    background-color: var(--white);
+    color: var(--dark-base);
+    padding: 0.5rem 0.625rem 0.5rem 1.25rem; /* Tighter padding for capsule structure */
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-white-capsule:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.icon-circle-orange {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-orange);
+    border-radius: 50%;
+    color: var(--white);
+    transition: var(--transition-normal);
+}
+
+.btn-white-capsule:hover .icon-circle-orange {
+    transform: scale(1.05);
+    background-color: var(--primary-orange-end);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    z-index: 101;
+}
+
+.mobile-menu-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    border-radius: 2px;
+    transition: var(--transition-normal);
+}
+
+/* --- Hero Main Body Section --- */
+.hero-main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-top: 9.5rem;
+    padding-bottom: 6rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Left Content Column */
+.hero-left-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero-headline {
+    font-family: var(--font-heading);
+    font-weight: 850;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: var(--white);
+}
+
+.highlight-text {
+    background: var(--orange-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subheadline {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.6;
+}
+
+.hero-cta-area {
+    margin-top: 1rem;
+}
+
+.btn-primary-gradient {
+    background: var(--orange-gradient);
+    color: var(--white);
+    padding: 0.875rem 1rem 0.875rem 2rem;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-primary-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px var(--orange-glow);
+}
+
+.icon-circle-glass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--white);
+    transition: var(--transition-normal);
+}
+
+.btn-primary-gradient:hover .icon-circle-glass {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Right Interactive Tracking Card */
+.hero-right-card {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tracking-card {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--white);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-deep);
+    overflow: hidden;
+    transition: transform 0.1s ease-out; /* Smooth transition for 3D card tilt */
+}
+
+/* Card Tabs */
+.card-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-grey);
+    background-color: #F8FAFC;
+}
+
+.card-tab {
+    flex: 1;
+    padding: 1.25rem 1rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.938rem;
+    color: var(--text-muted);
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition-normal);
+}
+
+.card-tab:hover {
+    color: var(--text-main);
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.card-tab.active {
+    color: var(--primary-orange);
+    border-bottom-color: var(--primary-orange);
+    font-weight: 700;
+    background-color: var(--white);
+}
+
+/* Card Body */
+.card-body {
+    padding: 2rem;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+    animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.half-width {
+    flex: 1;
+    width: 50%;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.input-wrapper {
+    position: relative;
+    border-radius: 10px;
+    background-color: var(--light-grey);
+    border: 1.5px solid transparent;
+    transition: var(--transition-normal);
+}
+
+.input-wrapper:focus-within {
+    background-color: var(--white);
+    border-color: var(--primary-orange);
+    box-shadow: 0 0 0 4px rgba(243, 83, 37, 0.15);
+}
+
+#tracking-input {
+    width: 100%;
+    padding: 1.125rem 1.25rem;
+    border-radius: 10px;
+    color: var(--text-main);
+    font-size: 0.938rem;
+    font-weight: 500;
+}
+
+#tracking-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* Global placeholder styling */
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+/* Select inputs custom styling */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--text-muted);
+    pointer-events: none;
+}
+
+select {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border-radius: 10px;
+    color: var(--text-main);
+    font-weight: 500;
+    background-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+/* Select placeholder and option colors */
+select:required:invalid {
+    color: var(--text-muted);
+}
+
+select option {
+    color: var(--text-main);
+    background-color: var(--white);
+}
+
+/* Shipping form input fields specific */
+#shipping-form input[type="number"] {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border-radius: 10px;
+    color: var(--text-main);
+    font-weight: 500;
+    background-color: transparent;
+}
+
+/* Error message styling */
+.error-message {
+    color: #DC2626;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    display: none;
+    animation: slideInDown 0.2s ease-out;
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-4px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.btn-orange-solid {
+    background: var(--orange-gradient);
+    color: var(--white);
+    padding: 1.125rem;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-orange-solid:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px var(--orange-glow);
+}
+
+.btn-orange-solid:active {
+    transform: translateY(0);
+}
+
+/* Meta Links */
+.card-meta-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+}
+
+.meta-link {
+    font-size: 0.813rem;
+    font-weight: 600;
+    color: var(--primary-orange);
+}
+
+.meta-link:hover {
+    color: var(--primary-orange-end);
+    text-decoration: underline;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.info-icon {
+    opacity: 0.8;
+}
+
+/* Card Footer & App Downloads */
+.card-footer {
+    background-color: #F8FAFC;
+    border-top: 1px solid var(--border-grey);
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.download-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+}
+
+.app-badges {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.app-badge {
+    flex: 1;
+    display: block;
+    transition: var(--transition-normal);
+}
+
+.app-badge-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.app-badge:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* ==========================================================================
+   BY THE NUMBERS — "DATA RAIL" IDENTITY
+   --------------------------------------------------------------------------
+   Shares the scroll driver with every other cinematic section (pinned +
+   video scrub) but nothing else. This section is left-aligned, runs a
+   vertical progress rail down the left edge, uses a monospaced numeric
+   voice, and lights the frame with a directional left-to-right wash instead
+   of a centred vignette.
+   ========================================================================== */
+
+.numbers-section {
+    background-color: var(--dark-base);
+    border-top: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.numbers-fullscreen-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.numbers-video-bg-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.numbers-video-bg-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+}
+
+/* Directional wash — dark at the type, open at the far edge. */
+.numbers-video-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(100deg,
+            rgba(11, 17, 24, 0.96) 0%,
+            rgba(11, 17, 24, 0.86) 38%,
+            rgba(11, 17, 24, 0.42) 72%,
+            rgba(11, 17, 24, 0.22) 100%);
+    z-index: 1;
+}
+
+/* Faint engineering grid — unique to this section. */
+.numbers-grid-texture {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 88px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 88px);
+    mask-image: linear-gradient(100deg, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+    -webkit-mask-image: linear-gradient(100deg, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+}
+
+.numbers-content-container {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 3.5rem;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    pointer-events: none;
+}
+
+/* ── Vertical progress rail ───────────────────────────────────────────── */
+.numbers-rail {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.numbers-rail .rail-cap {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.numbers-rail .rail-track {
+    position: relative;
+    flex: 1 1 auto;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.numbers-rail .rail-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--orange-gradient);
+    transform: scaleY(0);
+    transform-origin: top center;
+    will-change: transform;
+}
+
+
+
+/* ── Left-aligned content column ──────────────────────────────────────── */
+.numbers-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.numbers-header-wrapper {
+    text-align: left;
+    pointer-events: auto;
+    max-width: 620px;
+}
+
+.numbers-header-wrapper .section-tagline {
+    font-family: var(--font-mono);
+    letter-spacing: 4px;
+}
+
+.numbers-header-wrapper .section-title {
+    font-size: 2.25rem;
+    line-height: 1.15;
+}
+
+.numbers-header-wrapper .section-divider {
+    margin: 1.25rem 0 0;
+    width: 44px;
+    height: 3px;
+}
+
+.numbers-slides-container {
+    position: relative;
+    flex: 0 0 auto;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+}
+
+/* Slides stack in the same box and cross-fade. They are centred with
+   inset + justify-content, never with translate(-50%): GSAP owns the
+   transform property here and would overwrite any CSS translate,
+   dropping the element out of position on the first tween. */
+.numbers-slide {
+    position: absolute;
+    inset: 0;
+    max-width: 700px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.75rem;
+    padding-left: 1.75rem;
+    border-left: 2px solid rgba(243, 83, 37, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+/* Static fallback if the scroll engine never boots. */
+.numbers-slide:first-child {
+    opacity: 1;
+    pointer-events: auto;
+    filter: blur(0);
+}
+
+.numbers-slide .slide-number {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--primary-orange);
+    display: block;
+}
+
+.numbers-slide .slide-number::before {
+    content: '// ';
+    color: rgba(243, 83, 37, 0.5);
+}
+
+.num-value {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 7.5rem;
+    line-height: 0.92;
+    letter-spacing: -5px;
+    background: var(--orange-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 8px 24px rgba(243, 83, 37, 0.3));
+    display: block;
+    /* Tabular figures stop the counter from reflowing while it rolls up. */
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+}
+
+.numbers-slide .slide-title {
+    font-family: var(--font-heading);
+    font-size: 1.875rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.numbers-slide .slide-desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 520px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Short desktop viewports ──────────────────────────────────────────── */
+@media (min-width: 1025px) and (max-height: 820px) {
+    .numbers-content-container {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+    }
+
+    .numbers-main {
+        gap: 1.75rem;
+    }
+
+    .numbers-slides-container {
+        min-height: 280px;
+    }
+
+    .numbers-slide {
+        gap: 0.5rem;
+    }
+
+    .num-value {
+        font-size: 5.5rem;
+        letter-spacing: -3px;
+    }
+}
+
+/* ── Tablet / mobile: rail collapses, stats become a stacked list ─────── */
+@media (max-width: 1024px) {
+    .numbers-fullscreen-container {
+        height: auto;
+        overflow: visible;
+    }
+
+    /* sticky, not fixed: three sections each with a position:fixed video
+       would all paint at once and bleed across each other's scroll range. */
+    .numbers-video-bg-container {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100svh;
+        margin-bottom: -100vh;
+        margin-bottom: -100svh;
+    }
+
+    .numbers-grid-texture {
+        display: none;
+    }
+
+    /* The directional wash is aimed at a wide frame; on a narrow screen it
+       buries the video entirely, so flatten it. */
+    .numbers-video-overlay {
+        background: linear-gradient(180deg, rgba(11, 17, 24, 0.82) 0%, rgba(11, 17, 24, 0.72) 100%);
+    }
+
+    .numbers-content-container {
+        display: block;
+        height: auto;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    /* The vertical rail tracks a pinned timeline that does not run here. */
+    .numbers-rail {
+        display: none;
+    }
+
+    .numbers-main {
+        gap: 2rem;
+    }
+
+    .numbers-header-wrapper .section-title {
+        font-size: 1.875rem;
+    }
+
+    .numbers-slides-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        min-height: auto;
+    }
+
+    .numbers-slide {
+        position: relative;
+        inset: auto;
+        max-width: 100%;
+        opacity: 1;
+        filter: blur(0);
+        pointer-events: auto;
+        /* No !important here: GSAP's inline transform drives the mobile
+           fade-up, and !important would silently cancel it. */
+        transform: none;
+        padding: 2rem 1.5rem;
+        border-left: 2px solid var(--primary-orange);
+        background-color: rgba(18, 26, 36, 0.72);
+        border-radius: 0 var(--radius-card) var(--radius-card) 0;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: var(--shadow-deep);
+    }
+
+    .num-value {
+        font-size: 4.5rem;
+        letter-spacing: -2px;
+    }
+
+    .numbers-slide .slide-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .numbers-slide {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .num-value {
+        font-size: 3.5rem;
+        letter-spacing: -1px;
+    }
+
+    .numbers-slide .slide-title {
+        font-size: 1.25rem;
+    }
+
+    .numbers-slide .slide-desc {
+        font-size: 0.9375rem;
+    }
+}
+
+/* --- Toast Notifications --- */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--dark-surface);
+    color: var(--white);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid var(--primary-orange);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-deep);
+    backdrop-filter: blur(16px);
+    min-width: 300px;
+    animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideIn {
+    from { transform: translateX(100%) translateY(0); opacity: 0; }
+    to { transform: translateX(0) translateY(0); opacity: 1; }
+}
+
+.toast.fade-out {
+    animation: toastSlideOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideOut {
+    from { transform: translateX(0) scale(1); opacity: 1; }
+    to { transform: translateX(30px) scale(0.9); opacity: 0; }
+}
+
+.toast-message {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS & MEDIA QUERIES
+   ========================================================================== */
+
+/* Large screens (up to 1200px) */
+@media (max-width: 1200px) {
+    .hero-headline {
+        font-size: 3rem;
+    }
+}
+
+/* Tablet / Medium screens (up to 1024px) */
+@media (max-width: 1024px) {
+    .hero-wrapper {
+        background-image: 
+            linear-gradient(180deg, rgba(8, 12, 18, 0.95) 0%, rgba(8, 12, 18, 0.8) 50%, rgba(8, 12, 18, 0.95) 100%), 
+            url('assets/hero-bg.jpg');
+    }
+    
+    .hero-main {
+        padding-top: 7rem;
+        padding-bottom: 5rem;
+    }
+    
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .hero-left-content {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .hero-subheadline {
+        max-width: 600px;
+    }
+    
+    .hero-right-card {
+        justify-content: center;
+    }
+    
+    .tracking-card {
+        max-width: 500px;
+    }
+    
+    /* Mobile Navigation Drawer System */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: rgba(11, 17, 24, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid var(--glass-border);
+        padding: 6rem 2rem 2rem;
+        transition: var(--transition-normal);
+        z-index: 99;
+    }
+    
+    .nav-menu.open {
+        right: 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        width: 100%;
+    }
+    
+    .nav-link {
+        font-size: 1.125rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0.5rem 0 0 1rem;
+        pointer-events: auto;
+    }
+    
+    .dropdown-menu.open {
+        display: block;
+    }
+    
+    .nav-item-dropdown:hover .dropdown-menu {
+        transform: none;
+    }
+    
+    .dropdown-chevron.rotated {
+        transform: rotate(180deg);
+    }
+    
+    .header-actions {
+        display: none; /* Hide action buttons on mobile headers, place them in nav menu */
+    }
+    
+    .nav-menu .header-actions-mobile {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1.25rem;
+        margin-top: 3rem;
+        border-top: 1px solid var(--glass-border);
+        padding-top: 2rem;
+    }
+    
+    /* Hamburger morph to X Close */
+    .mobile-menu-toggle.open .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.open .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* Mobile Small screens (up to 550px) */
+@media (max-width: 550px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    .hero-headline {
+        font-size: 2.25rem;
+    }
+    
+    .hero-subheadline {
+        font-size: 1rem;
+    }
+    
+    .card-body {
+        padding: 1.25rem;
+    }
+    
+    .app-badges {
+        flex-direction: column;
+    }
+    
+    .card-footer {
+        padding: 1.25rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 0;
+    }
+    
+    .half-width {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   VIDEO SCROLL SCRUBBING & CINEMATIC LAYOUT STYLES
+   ========================================================================== */
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero-video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(11, 17, 24, 0.7) 0%, rgba(11, 17, 24, 0.3) 45%, rgba(11, 17, 24, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-main {
+    position: relative;
+    z-index: 2;
+}
+
+/* Cinematic Slide Overlays
+   ------------------------------------------------------------------------
+   The overlay is a full-bleed flex box and each slide fills it. Centring is
+   done with inset + flex, NOT translate(-50%, -50%): GSAP animates `y` and
+   `scale` on these nodes, which rewrites the whole transform property and
+   would have thrown the slide out of centre on its first tween. */
+.cinematic-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+    padding: 0 2rem;
+}
+
+.cinematic-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0; /* Controlled by GSAP */
+    pointer-events: none;
+}
+
+.slide-num {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: var(--primary-orange);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.slide-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: -1px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1rem;
+}
+
+.slide-text {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 580px;
+    line-height: 1.6;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   NEW LANDING PAGE SECTIONS STYLES
+   ========================================================================== */
+
+/* Section Utility Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-tagline {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--primary-orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--white);
+    letter-spacing: -0.5px;
+}
+
+.section-divider {
+    width: 60px;
+    height: 4px;
+    background: var(--orange-gradient);
+    border-radius: var(--radius-pill);
+    margin: 1.5rem auto 0;
+}
+
+.section-description {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+/* ==========================================================================
+   OUR SERVICES — "BRACKETED PANEL" IDENTITY
+   --------------------------------------------------------------------------
+   Same scroll driver as the other cinematic sections, opposite composition
+   to BY THE NUMBERS: everything is centred, the copy sits inside a
+   bracketed glass panel, and progress reads as a horizontal dot row along
+   the bottom edge. Lit with a centred vignette.
+   ========================================================================== */
+
+.services-section {
+    background-color: var(--dark-base);
+    border-top: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.services-fullscreen-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.services-video-bg-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.services-video-bg-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+/* Centred vignette — the visual opposite of the NUMBERS directional wash. */
+.services-video-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, rgba(11, 17, 24, 0.18) 0%, rgba(11, 17, 24, 0.86) 82%),
+        linear-gradient(180deg, rgba(11, 17, 24, 0.65) 0%, transparent 30%, rgba(11, 17, 24, 0.65) 100%);
+    z-index: 1;
+}
+
+.services-content-container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+    pointer-events: none;
+}
+
+.services-header-wrapper {
+    text-align: center;
+    pointer-events: auto;
+}
+
+/* ── The bracketed panel ──────────────────────────────────────────────── */
+.services-slides-container {
+    position: relative;
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 860px;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 3.5rem;
+    /* A radial fill rather than a flat one plus backdrop-filter: the flat
+       version drew a hard rectangular seam across the video behind it. */
+    background: radial-gradient(ellipse at center,
+        rgba(11, 17, 24, 0.55) 0%,
+        rgba(11, 17, 24, 0.34) 55%,
+        rgba(11, 17, 24, 0) 100%);
+    border-radius: var(--radius-card);
+}
+
+.panel-bracket {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-color: rgba(243, 83, 37, 0.8);
+    border-style: solid;
+    border-width: 0;
+    pointer-events: none;
+}
+
+.panel-bracket.br-tl {
+    top: 0;
+    left: 0;
+    border-top-width: 2px;
+    border-left-width: 2px;
+    border-top-left-radius: 6px;
+}
+
+.panel-bracket.br-tr {
+    top: 0;
+    right: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-top-right-radius: 6px;
+}
+
+.panel-bracket.br-bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-bottom-left-radius: 6px;
+}
+
+.panel-bracket.br-br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-bottom-right-radius: 6px;
+}
+
+/* Slides stack and cross-fade. Centred with inset + justify-content, never
+   with a CSS translate: GSAP owns the transform property on these nodes. */
+.service-slide {
+    position: absolute;
+    inset: 3rem 3.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+/* Static fallback if the scroll engine never boots. */
+.service-slide:first-child {
+    opacity: 1;
+    pointer-events: auto;
+    filter: blur(0);
+}
+
+.service-slide .slide-number {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-orange);
+    letter-spacing: 4px;
+    background: var(--orange-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+}
+
+.service-slide .slide-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--white);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.service-slide .slide-desc {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 580px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.service-slide .slide-cta {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-pill);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), color var(--transition-normal);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: auto;
+}
+
+.service-slide .slide-cta:hover {
+    background-color: var(--primary-orange);
+    border-color: var(--primary-orange);
+    box-shadow: 0 8px 20px var(--orange-glow);
+    color: var(--white);
+}
+
+.service-slide .slide-cta-arrow {
+    transition: transform var(--transition-fast);
+}
+
+.service-slide .slide-cta:hover .slide-cta-arrow {
+    transform: translateX(4px);
+}
+
+/* ── Horizontal progress ticker ───────────────────────────────────────── */
+.services-ticker {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    pointer-events: none;
+}
+
+.services-ticker .ticker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--radius-pill);
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: width var(--transition-normal), background-color var(--transition-normal);
+}
+
+.services-ticker .ticker-dot.active {
+    width: 30px;
+    background: var(--orange-gradient);
+}
+
+/* ── Short desktop viewports ──────────────────────────────────────────── */
+@media (min-width: 1025px) and (max-height: 820px) {
+    .services-content-container {
+        padding-top: 6rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .services-slides-container {
+        margin: 1.25rem 0;
+        padding: 2rem 3rem;
+    }
+
+    .service-slide {
+        inset: 2rem 3rem;
+        gap: 1rem;
+    }
+
+    .service-slide .slide-title {
+        font-size: 2.75rem;
+    }
+}
+
+/* ==========================================================================
+   WHY CHOOSE US — "RIGHT DOSSIER" IDENTITY
+   --------------------------------------------------------------------------
+   Third distinct composition on the same scroll driver: a rotated standing
+   label pinned to the left gutter, an oversized ghost numeral behind the
+   copy, the copy itself inside a right-hand glass card, and a numeric index
+   running down the right edge. Lit from the left, so the type sits on the
+   dark side — the mirror image of BY THE NUMBERS.
+   ========================================================================== */
+
+.why-section {
+    background-color: var(--dark-base);
+    border-top: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-fullscreen-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.why-video-bg-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.why-video-bg-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+/* Wash runs right-to-left — mirrored against the NUMBERS section. */
+.why-video-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(260deg,
+            rgba(11, 17, 24, 0.95) 0%,
+            rgba(11, 17, 24, 0.82) 40%,
+            rgba(11, 17, 24, 0.38) 75%,
+            rgba(11, 17, 24, 0.2) 100%);
+    z-index: 1;
+}
+
+.why-content-container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2rem;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+    pointer-events: none;
+}
+
+/* ── Rotated standing label in the left gutter ────────────────────────── */
+.why-standing-label {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+}
+
+.why-standing-label .section-tagline {
+    margin: 0;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--font-mono);
+    letter-spacing: 6px;
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Right-aligned content column ─────────────────────────────────────── */
+.why-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2.5rem;
+}
+
+.why-header-wrapper {
+    text-align: right;
+    pointer-events: auto;
+    max-width: 620px;
+}
+
+.why-header-wrapper .section-title {
+    font-size: 2.5rem;
+    line-height: 1.12;
+}
+
+.why-header-wrapper .section-divider {
+    margin: 1.25rem 0 0 auto;
+    width: 44px;
+    height: 3px;
+}
+
+.why-slides-container {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 620px;
+    min-height: 400px;
+}
+
+/* Slides stack and cross-fade. Centred with inset, never with a CSS
+   translate: GSAP owns the transform property on these nodes. */
+.why-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    gap: 1.125rem;
+    padding: 2.5rem 2.5rem 2.5rem 3rem;
+    background-color: rgba(18, 26, 36, 0.62);
+    border: 1px solid var(--glass-border);
+    border-right: 3px solid var(--primary-orange);
+    border-radius: var(--radius-card) 0 0 var(--radius-card);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-deep);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+/* Static fallback if the scroll engine never boots. */
+.why-slide:first-child {
+    opacity: 1;
+    pointer-events: auto;
+    filter: blur(0);
+}
+
+/* Oversized ghost numeral behind the card copy. */
+.why-slide .slide-ghost {
+    position: absolute;
+    right: 1rem;
+    bottom: -2.5rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 14rem;
+    line-height: 1;
+    letter-spacing: -8px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+    user-select: none;
+}
+
+.why-slide .slide-number {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--primary-orange);
+    display: block;
+    position: relative;
+}
+
+.why-slide .slide-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--white);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+.why-slide .slide-desc {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 500px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.why-slide .slide-cta {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-pill);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), color var(--transition-normal);
+    pointer-events: auto;
+    position: relative;
+}
+
+.why-slide .slide-cta:hover {
+    background-color: var(--primary-orange);
+    border-color: var(--primary-orange);
+    box-shadow: 0 8px 20px var(--orange-glow);
+    color: var(--white);
+}
+
+.why-slide .slide-cta-arrow {
+    transition: transform var(--transition-fast);
+}
+
+.why-slide .slide-cta:hover .slide-cta-arrow {
+    transform: translateX(4px);
+}
+
+/* ── Numeric index down the right edge ────────────────────────────────── */
+.why-ticker {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.875rem;
+    width: 2.5rem;
+    pointer-events: none;
+}
+
+.why-ticker .ticker-dot {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.28);
+    transition: color var(--transition-normal), transform var(--transition-normal);
+}
+
+.why-ticker .ticker-dot.active {
+    color: var(--primary-orange);
+    transform: scale(1.25);
+}
+
+/* ── Short desktop viewports ──────────────────────────────────────────── */
+@media (min-width: 1025px) and (max-height: 820px) {
+    .why-content-container {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+    }
+
+    .why-main {
+        gap: 1.5rem;
+    }
+
+    .why-header-wrapper .section-title {
+        font-size: 2rem;
+    }
+
+    .why-slides-container {
+        min-height: 330px;
+    }
+
+    .why-slide {
+        padding: 2rem;
+        gap: 0.875rem;
+    }
+
+    .why-slide .slide-title {
+        font-size: 2rem;
+    }
+
+    .why-slide .slide-ghost {
+        font-size: 10rem;
+    }
+}
+/* Footer Styles */
+.main-footer {
+    background-color: var(--dark-base);
+    border-top: 1px solid var(--glass-border);
+    padding: 5rem 0 0;
+}
+
+.footer-content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.brand-desc {
+    font-size: 0.938rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.footer-header {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-link {
+    font-size: 0.938rem;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--primary-orange);
+    padding-left: 4px;
+}
+
+.footer-contact {
+    color: var(--text-muted);
+    font-size: 0.938rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-contact a {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-orange);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--glass-border);
+    padding: 2rem 0;
+    font-size: 0.813rem;
+    color: var(--text-muted);
+}
+
+.footer-bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-meta-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-meta-links a:hover {
+    color: var(--primary-orange);
+}
+
+/* ==========================================================================
+   ADDITIONAL RESPONSIVENESS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+    .cinematic-slide .slide-title {
+        font-size: 2.25rem;
+    }
+
+    .cinematic-slide .slide-text {
+        font-size: 1rem;
+        max-width: 480px;
+    }
+
+    /* ── OUR SERVICES — panel unwraps into a stacked card list ─────────── */
+    .services-fullscreen-container {
+        height: auto;
+        overflow: visible;
+    }
+
+    /* sticky, not fixed: three sections each holding a position:fixed video
+       would all paint at once and bleed across each other's scroll range. */
+    .services-video-bg-container {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100svh;
+        margin-bottom: -100vh;
+        margin-bottom: -100svh;
+    }
+
+    .services-content-container {
+        display: block;
+        height: auto;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .services-slides-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 100%;
+        margin: 2.5rem 0 0;
+        padding: 0;
+        background: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .panel-bracket {
+        display: none;
+    }
+
+    .service-slide {
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        filter: blur(0);
+        pointer-events: auto;
+        /* No !important here: GSAP's inline transform drives the mobile
+           fade-up, and !important would silently cancel it. */
+        transform: none;
+        padding: 2.5rem 1.75rem;
+        background-color: rgba(18, 26, 36, 0.72);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-card);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: var(--shadow-deep);
+        gap: 1.25rem;
+    }
+
+    .service-slide .slide-title {
+        font-size: 2rem;
+    }
+
+    .services-ticker {
+        display: none;
+    }
+
+    /* ── WHY CHOOSE US — dossier unwraps into a stacked card list ──────── */
+    .why-fullscreen-container {
+        height: auto;
+        overflow: visible;
+    }
+
+    .why-video-bg-container {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100svh;
+        margin-bottom: -100vh;
+        margin-bottom: -100svh;
+    }
+
+    .why-content-container {
+        display: block;
+        height: auto;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .why-video-overlay {
+        background: linear-gradient(180deg, rgba(11, 17, 24, 0.82) 0%, rgba(11, 17, 24, 0.72) 100%);
+    }
+
+    .why-standing-label {
+        width: auto;
+        display: block;
+        margin-bottom: 0.75rem;
+    }
+
+    .why-standing-label .section-tagline {
+        writing-mode: horizontal-tb;
+        transform: none;
+        letter-spacing: 3px;
+    }
+
+    .why-header-wrapper {
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .why-header-wrapper .section-title {
+        font-size: 1.875rem;
+    }
+
+    .why-header-wrapper .section-divider {
+        margin: 1.25rem auto 0 0;
+    }
+
+    .why-slides-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 100%;
+        min-height: auto;
+        margin-top: 2.5rem;
+    }
+
+    .why-slide {
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        filter: blur(0);
+        pointer-events: auto;
+        transform: none;
+        padding: 2.5rem 1.75rem;
+        border-right: 1px solid var(--glass-border);
+        border-left: 3px solid var(--primary-orange);
+        border-radius: 0 var(--radius-card) var(--radius-card) 0;
+        gap: 1rem;
+    }
+
+    .why-slide .slide-ghost {
+        font-size: 8rem;
+        bottom: -1.5rem;
+        right: 0.5rem;
+    }
+
+    .why-slide .slide-title {
+        font-size: 2rem;
+    }
+
+    .why-ticker {
+        display: none;
+    }
+
+    .footer-content-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .cinematic-slide .slide-title {
+        font-size: 1.75rem;
+    }
+
+    .cinematic-slide .slide-text {
+        font-size: 0.875rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .service-slide {
+        padding: 2rem 1.25rem;
+        gap: 1.25rem;
+    }
+
+    .service-slide .slide-title {
+        font-size: 1.625rem;
+    }
+
+    .service-slide .slide-desc {
+        font-size: 0.9375rem;
+    }
+
+    .why-slide {
+        padding: 2rem 1.25rem;
+        gap: 0.875rem;
+    }
+
+    .why-slide .slide-title {
+        font-size: 1.625rem;
+    }
+
+    .why-slide .slide-desc {
+        font-size: 0.9375rem;
+    }
+
+    .why-slide .slide-ghost {
+        font-size: 6rem;
+    }
+
+    .footer-bottom-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-meta-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+/* --- Pinned hero on short desktop viewports ---------------------------------
+   While the hero is pinned it can never scroll internally, so anything taller
+   than the viewport is simply unreachable. Tighten the vertical rhythm on short
+   laptop screens so the whole hero stays inside the pinned frame. */
+@media (min-width: 1025px) and (max-height: 820px) {
+    .hero-main {
+        padding-top: 7rem;
+        padding-bottom: 3rem;
+    }
+
+    .hero-grid {
+        gap: 2.5rem;
+    }
+}
+
+/* ==========================================================================
+   GLOBAL ADDITIONS
+   ========================================================================== */
+
+:root {
+    /* Monospaced voice, used by the NUMBERS rail and the WHY index. */
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Lock background scrolling while the mobile drawer is open. */
+body.nav-open {
+    overflow: hidden;
+}

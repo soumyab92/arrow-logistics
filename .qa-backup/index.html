@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ARROW Logistics - We keep your supply chain moving. On-time, secure, and hassle-free global shipping and tracking solutions.">
+    <title>ARROW Logistics | Global Shipping & Supply Chain Solutions</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Main Hero Wrapper with background image and overlays -->
+    <div class="hero-wrapper" id="hero-wrapper">
+        <!-- Video Background Container -->
+        <div class="hero-video-container">
+            <video id="hero-video" src="assets/hero-bg-scrub.mp4" playsinline muted preload="auto" loop></video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Header & Navigation Bar -->
+        <header class="header" id="main-header">
+            <div class="container header-container">
+                <!-- Logo -->
+                <a href="#" class="logo" id="logo-brand" aria-label="ARROW Logistics Home">
+                    <img src="assets/logo.png" alt="ARROW Logistics Logo" class="logo-img" width="180">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <!-- Navigation Links -->
+                <nav class="nav-menu" id="nav-menu-bar">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link active" id="nav-home">HOME</a></li>
+                        <li class="nav-item-dropdown">
+                            <a href="#" class="nav-link" id="nav-shipping" aria-haspopup="true" aria-expanded="false">
+                                SHIPPING
+                                <svg class="dropdown-chevron" viewBox="0 0 20 20" width="16" height="16"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <!-- Dropdown Menu -->
+                            <ul class="dropdown-menu" aria-label="Shipping Options">
+                                <li><a href="#" class="dropdown-link">Express Delivery</a></li>
+                                <li><a href="#" class="dropdown-link">Ocean Freight</a></li>
+                                <li><a href="#" class="dropdown-link">Air Cargo</a></li>
+                                <li><a href="#" class="dropdown-link">Road Transport</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="nav-link" id="nav-tracking">TRACKING</a></li>
+                        <li><a href="#" class="nav-link" id="nav-support">SUPPORT</a></li>
+                        <li><a href="#" class="nav-link" id="nav-career">CAREER</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Actions (Badges and Buttons) -->
+                <div class="header-actions" id="header-actions-area">
+                    <!-- Phone Badge -->
+                    <a href="tel:+8801764327631" class="phone-badge" id="phone-contact-badge"
+                        aria-label="Call Arrow Logistics at +880 1764327631">
+                        <span class="phone-icon-wrapper">
+                            <svg class="phone-icon" viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                        </span>
+                        <span class="phone-number">+880 1764327631</span>
+                    </a>
+
+                    <!-- Get Started Now CTA -->
+                    <button class="btn btn-white-capsule" id="get-started-cta-btn">
+                        <span>Get Started Now</span>
+                        <span class="icon-circle-orange">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="13 17 18 12 13 7"></polyline>
+                                <polyline points="6 17 11 12 6 7"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Hero Body -->
+        <main class="hero-main">
+            <!-- Cinematic Overlay Slides -->
+            <div class="cinematic-overlay" id="cinematic-overlay">
+                <div class="cinematic-slide" id="slide-1">
+                    <span class="slide-num">01 / VELOCITY</span>
+                    <h2 class="slide-title">WE REACH ANY DESTINATION</h2>
+                    <p class="slide-text">Connecting continents with rapid shipping transit across air, sea, and land.
+                    </p>
+                </div>
+                <div class="cinematic-slide" id="slide-2">
+                    <span class="slide-num">02 / TELEMETRY</span>
+                    <h2 class="slide-title">REAL-TIME SHIPMENT INSIGHTS</h2>
+                    <p class="slide-text">Track every mile, milestone, and update down to the meter with high-accuracy
+                        telemetry.</p>
+                </div>
+                <div class="cinematic-slide" id="slide-3">
+                    <span class="slide-num">03 / SUSTAINABLE</span>
+                    <h2 class="slide-title">ECO-OPTIMIZED LOGISTICS</h2>
+                    <p class="slide-text">Reducing carbon footprint through smart-route consolidation and
+                        energy-efficient supply chains.</p>
+                </div>
+            </div>
+
+            <div class="container hero-grid" id="main-hero-grid">
+
+                <!-- Left Content Column -->
+                <div class="hero-left-content" id="hero-intro-column">
+                    <h1 class="hero-headline" id="main-slogan">
+                        WE KEEP YOUR<br>
+                        <span class="highlight-text">SUPPLY CHAIN</span><br>
+                        MOVING
+                    </h1>
+                    <p class="hero-subheadline" id="main-description">
+                        From local to global shipments, our seamless logistics solutions ensure on-time, secure, and
+                        hassle-free delivery.
+                    </p>
+                    <div class="hero-cta-area">
+                        <button class="btn btn-primary-gradient" id="learn-more-btn">
+                            <span>Learn More Now</span>
+                            <span class="icon-circle-glass">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="13 17 18 12 13 7"></polyline>
+                                    <polyline points="6 17 11 12 6 7"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Tracking Card -->
+                <div class="hero-right-card" id="interactive-card-column">
+                    <div class="tracking-card" id="tracking-card-container">
+                        <!-- Segmented Tabs -->
+                        <div class="card-tabs" role="tablist">
+                            <button class="card-tab active" id="tab-tracking" role="tab" aria-selected="true"
+                                aria-controls="panel-tracking">
+                                Tracking Order
+                            </button>
+                            <button class="card-tab" id="tab-shipping" role="tab" aria-selected="false"
+                                aria-controls="panel-shipping">
+                                Ship Order
+                            </button>
+                        </div>
+
+                        <!-- Card Body & Forms -->
+                        <div class="card-body">
+
+                            <!-- Tab Panel 1: Tracking Order -->
+                            <div class="tab-panel active" id="panel-tracking" role="tabpanel"
+                                aria-labelledby="tab-tracking">
+                                <form id="tracking-form" novalidate>
+                                    <div class="form-group">
+                                        <label for="tracking-input" class="input-label">Tracking Number</label>
+                                        <div class="input-wrapper">
+                                            <input type="text" id="tracking-input"
+                                                placeholder="Type your tracking number here" aria-required="true"
+                                                autocomplete="off">
+                                            <span class="input-focus-border"></span>
+                                        </div>
+                                        <p class="error-message" id="tracking-error"></p>
+                                    </div>
+                                    <button type="submit" class="btn btn-full btn-orange-solid" id="track-submit-btn">
+                                        <span>Track Now</span>
+                                    </button>
+                                </form>
+                            </div>
+ 
+                            <!-- Tab Panel 2: Ship Order (Hidden by default) -->
+                            <div class="tab-panel" id="panel-shipping" role="tabpanel" aria-labelledby="tab-shipping">
+                                <form id="shipping-form" novalidate>
+                                    <div class="form-row">
+                                        <div class="form-group half-width">
+                                            <label for="shipping-origin" class="input-label">Origin</label>
+                                            <div class="input-wrapper select-wrapper">
+                                                <select id="shipping-origin" required aria-required="true">
+                                                    <option value="" disabled selected>Select Origin</option>
+                                                    <option value="dhaka">Dhaka, BD</option>
+                                                    <option value="chittagong">Chittagong, BD</option>
+                                                    <option value="singapore">Singapore, SG</option>
+                                                    <option value="new-york">New York, US</option>
+                                                    <option value="london">London, UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group half-width">
+                                            <label for="shipping-destination" class="input-label">Destination</label>
+                                            <div class="input-wrapper select-wrapper">
+                                                <select id="shipping-destination" required aria-required="true">
+                                                    <option value="" disabled selected>Select Destination</option>
+                                                    <option value="dhaka">Dhaka, BD</option>
+                                                    <option value="chittagong">Chittagong, BD</option>
+                                                    <option value="singapore">Singapore, SG</option>
+                                                    <option value="new-york">New York, US</option>
+                                                    <option value="london">London, UK</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group half-width">
+                                            <label for="shipping-weight" class="input-label">Weight (kg)</label>
+                                            <div class="input-wrapper">
+                                                <input type="number" id="shipping-weight" placeholder="e.g. 15"
+                                                    min="0.1" step="0.1" aria-required="true">
+                                            </div>
+                                        </div>
+                                        <div class="form-group half-width">
+                                            <label for="shipping-type" class="input-label">Freight Type</label>
+                                            <div class="input-wrapper select-wrapper">
+                                                <select id="shipping-type" aria-required="true">
+                                                    <option value="express" selected>Express Courier</option>
+                                                    <option value="air">Air Freight</option>
+                                                    <option value="ocean">Ocean Cargo</option>
+                                                    <option value="road">Road Freight</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="error-message" id="shipping-error"></p>
+                                    <button type="submit" class="btn btn-full btn-orange-solid"
+                                        id="shipping-submit-btn">
+                                        <span>Calculate Shipping</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                            <!-- Meta Links -->
+                            <div class="card-meta-links">
+                                <a href="#" class="meta-link" id="meta-multiple-tracking">Multiple Tracking Numbers</a>
+                                <a href="#" class="meta-link flex-center" id="meta-support-help">
+                                    <svg class="info-icon" viewBox="0 0 20 20" width="14" height="14"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Need Help?</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        <!-- App Download Section -->
+                        <div class="card-footer">
+                            <span class="download-label">Download our mobile app</span>
+                            <div class="app-badges">
+                                <!-- Google Play Store -->
+                                <a href="#" class="app-badge" aria-label="Get it on Google Play">
+                                    <img src="assets/google-play-badge.png" alt="Get it on Google Play" class="app-badge-img">
+                                </a>
+                                <!-- Apple App Store -->
+                                <a href="#" class="app-badge" aria-label="Download on the App Store">
+                                    <img src="assets/app-store-badge.png" alt="Download on the App Store" class="app-badge-img">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Floating Bottom Statistics Bar (legacy anchor, kept for GSAP reference) -->
+        <div class="stats-bar" id="stats-panel-bar" aria-hidden="true" style="display:none;"></div>
+
+        <!-- Toast Notification Container for interactive actions -->
+        <div class="toast-container" id="toast-notif-container" aria-live="polite"></div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- BY THE NUMBERS — Cinematic scroll-driven (mirrors OUR SERVICES) -->
+    <!-- ============================================================ -->
+    <section class="numbers-section" id="numbers-section" aria-label="By The Numbers">
+        <div class="numbers-fullscreen-container">
+
+            <!-- Fullscreen Background Video -->
+            <div class="numbers-video-bg-container">
+                <video id="numbers-bg-video"
+                       src="assets/erasio_need_BY_THE_NUMBERS_section_ba.mp4"
+                       playsinline muted preload="auto" loop></video>
+                <div class="numbers-video-overlay"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="container numbers-content-container">
+
+                <!-- Section Header -->
+                <div class="numbers-header-wrapper" id="numbers-header">
+                    <span class="section-tagline">BY THE NUMBERS</span>
+                    <h2 class="section-title">PROVEN PERFORMANCE, GLOBAL SCALE</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <!-- Stat Slides — each stat is a full cinematic slide -->
+                <div class="numbers-slides-container">
+
+                    <!-- Stat 1 -->
+                    <div class="numbers-slide" id="num-slide-1">
+                        <span class="slide-number">01</span>
+                        <div class="num-value"
+                             data-target="12" data-suffix="+" data-decimals="0">12+</div>
+                        <h3 class="slide-title">Years of Experience</h3>
+                        <p class="slide-desc">Over a decade of deep-domain logistics expertise shaping faster, smarter, and more resilient global supply chains.</p>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="numbers-slide" id="num-slide-2">
+                        <span class="slide-number">02</span>
+                        <div class="num-value"
+                             data-target="150" data-suffix="+" data-decimals="0">150+</div>
+                        <h3 class="slide-title">Projects Completed</h3>
+                        <p class="slide-desc">From local last-mile to transoceanic container moves — every project delivered on time, on budget, and beyond expectation.</p>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="numbers-slide" id="num-slide-3">
+                        <span class="slide-number">03</span>
+                        <div class="num-value"
+                             data-target="40" data-suffix="+" data-decimals="0">40+</div>
+                        <h3 class="slide-title">Global Clients</h3>
+                        <p class="slide-desc">Trusted partners across 6 continents — from agile startups to Fortune 500 enterprises who depend on us every single day.</p>
+                    </div>
+
+                    <!-- Stat 4 -->
+                    <div class="numbers-slide" id="num-slide-4">
+                        <span class="slide-number">04</span>
+                        <div class="num-value"
+                             data-target="25" data-suffix="+" data-decimals="0">25+</div>
+                        <h3 class="slide-title">Awards &amp; Recognition</h3>
+                        <p class="slide-desc">Industry recognition from global logistics bodies validating our commitment to innovation, sustainability, and service excellence.</p>
+                    </div>
+
+                    <!-- Stat 5 -->
+                    <div class="numbers-slide" id="num-slide-5">
+                        <span class="slide-number">05</span>
+                        <div class="num-value"
+                             data-target="98" data-suffix="%" data-decimals="0">98%</div>
+                        <h3 class="slide-title">Client Satisfaction</h3>
+                        <p class="slide-desc">Measured across every shipment, every interaction — our clients consistently rate us best-in-class for reliability and transparency.</p>
+                    </div>
+
+                </div><!-- /.numbers-slides-container -->
+            </div><!-- /.container -->
+        </div><!-- /.numbers-fullscreen-container -->
+    </section>
+
+    <!-- Additional Landing Page Sections to demonstrate page scrolling -->
+    <section class="services-section" id="services">
+        <div class="services-fullscreen-container">
+            <!-- Fullscreen Background Video -->
+            <div class="services-video-bg-container">
+                <video id="services-bg-video" src="assets/erasio_next_INTELLIGENT_TRANSPORT_SOL.mp4" playsinline muted preload="auto" loop></video>
+                <div class="services-video-overlay"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="container services-content-container">
+                <div class="services-header-wrapper">
+                    <span class="section-tagline">OUR SERVICES</span>
+                    <h2 class="section-title">INTELLIGENT TRANSPORT SOLUTIONS</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <div class="services-slides-container">
+                    <!-- Slide 1: Express Delivery -->
+                    <div class="service-slide" id="service-slide-1">
+                        <span class="slide-number">01</span>
+                        <h3 class="slide-title">Express Delivery</h3>
+                        <p class="slide-desc">Guaranteed door-to-door courier service for urgent domestic and international shipments, backed by 24/7 priority support.</p>
+                        <a href="#" class="slide-cta">
+                            <span>Explore Express</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Slide 2: Ocean Freight -->
+                    <div class="service-slide" id="service-slide-2">
+                        <span class="slide-number">02</span>
+                        <h3 class="slide-title">Ocean Freight</h3>
+                        <p class="slide-desc">Cost-effective global maritime routes for full container load (FCL) and less than container load (LCL) bulk cargo shipping.</p>
+                        <a href="#" class="slide-cta">
+                            <span>Explore Maritime</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Slide 3: Air Cargo -->
+                    <div class="service-slide" id="service-slide-3">
+                        <span class="slide-number">03</span>
+                        <h3 class="slide-title">Air Cargo</h3>
+                        <p class="slide-desc">High-priority air transport networks catering to critical supply chain components, medical supplies, and perishable goods.</p>
+                        <a href="#" class="slide-cta">
+                            <span>Explore Air Cargo</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us — Cinematic scroll-driven section (mirrors OUR SERVICES) -->
+    <section class="why-section" id="why-choose-us">
+        <div class="why-fullscreen-container">
+
+            <!-- Fullscreen Background Video -->
+            <div class="why-video-bg-container">
+                <video id="why-bg-video"
+                       src="assets/erasio_need_WHY_CHOOSE_US_section_bac.mp4"
+                       playsinline muted preload="auto" loop></video>
+                <div class="why-video-overlay"></div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="container why-content-container">
+
+                <!-- Section Header -->
+                <div class="why-header-wrapper">
+                    <span class="section-tagline">WHY CHOOSE US</span>
+                    <h2 class="section-title">THE FORCE BEHIND EVERY DELIVERY</h2>
+                    <div class="section-divider"></div>
+                </div>
+
+                <!-- Cross-fading Reason Slides -->
+                <div class="why-slides-container">
+
+                    <!-- Slide 1 -->
+                    <div class="why-slide" id="why-slide-1">
+                        <span class="slide-number">01</span>
+                        <h3 class="slide-title">Creative Expertise</h3>
+                        <p class="slide-desc">Over a decade of hands-on logistics experience combined with a creative approach to solving complex supply chain challenges that no one else can match.</p>
+                        <a href="#" class="slide-cta">
+                            <span>Discover More</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="why-slide" id="why-slide-2">
+                        <span class="slide-number">02</span>
+                        <h3 class="slide-title">Strategic Thinking</h3>
+                        <p class="slide-desc">We combine machine learning routing and hybrid fleet technology to anticipate disruptions and optimise every route before a single package moves.</p>
+                        <a href="#" class="slide-cta">
+                            <span>Explore Strategy</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="why-slide" id="why-slide-3">
+                        <span class="slide-number">03</span>
+                        <h3 class="slide-title">Innovative Solutions</h3>
+                        <p class="slide-desc">Real-time telemetry, predictive ETAs, and eco-optimised consolidation routes powered by proprietary AI that keeps your cargo a step ahead of the market.</p>
+                        <a href="#" class="slide-cta">
+                            <span>See Innovation</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="why-slide" id="why-slide-4">
+                        <span class="slide-number">04</span>
+                        <h3 class="slide-title">Client-Focused Approach</h3>
+                        <p class="slide-desc">24/7 dedicated account management, transparent carbon reporting, and a robust customer portal — built entirely around the way you do business.</p>
+                        <a href="#" class="slide-cta">
+                            <span>Meet Our Team</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="why-slide" id="why-slide-5">
+                        <span class="slide-number">05</span>
+                        <h3 class="slide-title">Proven Results</h3>
+                        <p class="slide-desc">150+ completed projects, 99.8% on-time delivery rate, and 25 industry awards speak louder than any promise we could make on a page.</p>
+                        <a href="#" class="slide-cta">
+                            <span>View Case Studies</span>
+                            <span class="slide-cta-arrow">&rarr;</span>
+                        </a>
+                    </div>
+
+                </div><!-- /.why-slides-container -->
+            </div><!-- /.container -->
+        </div><!-- /.why-fullscreen-container -->
+    </section>
+
+    <footer class="main-footer">
+        <div class="container footer-content-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="assets/logo.png" alt="ARROW Logistics Logo" class="logo-img" width="180">
+                </a>
+                <p class="brand-desc">Fast, secure, and hassle-free global supply chain and shipment tracking solutions.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-header">Quick Links</h4>
+                <ul>
+                    <li><a href="#" class="footer-link">Express Shipping</a></li>
+                    <li><a href="#" class="footer-link">Ocean Logistics</a></li>
+                    <li><a href="#" class="footer-link">Air Cargo</a></li>
+                    <li><a href="#" class="footer-link">Support Desk</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-header">Contact Information</h4>
+                <p>Support: <a href="mailto:support@arrowlogistics.com">support@arrowlogistics.com</a></p>
+                <p>Phone: +880 1764327631</p>
+                <p>Address: 45 Global Gateway Suite 10, New York</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>&copy; 2026 ARROW Logistics. All rights reserved.</p>
+                <div class="footer-meta-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger CDN links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Script Entry -->
+    <script src="app.js"></script>
+</body>
+
+</html>
