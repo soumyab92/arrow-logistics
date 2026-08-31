@@ -9,31 +9,31 @@
     --primary-orange-end: #E63E11;
     --orange-gradient: linear-gradient(135deg, #F35325 0%, #E63E11 100%);
     --orange-glow: rgba(243, 83, 37, 0.4);
-    
+
     --dark-base: #0B1118;
     --dark-surface: #121A24;
     --surface-glass: rgba(18, 26, 36, 0.7);
     --glass-border: rgba(255, 255, 255, 0.12);
-    
+
     --white: #ffffff;
     --light-grey: #F3F5F7;
     --border-grey: #E2E8F0;
-    
+
     --text-main: #0B1118;
     --text-light: #F3F5F7;
     --text-muted: #8A94A6;
-    
+
     /* Typography */
     --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    
+
     /* Shadows & Borders */
     --shadow-deep: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
     --shadow-soft: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     --shadow-glow: 0 12px 24px -6px var(--orange-glow);
     --radius-pill: 9999px;
     --radius-card: 20px;
-    
+
     /* Transitions */
     --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -41,7 +41,9 @@
 }
 
 /* --- Base & Reset Styles --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -70,7 +72,9 @@ a {
     transition: var(--transition-fast);
 }
 
-button, input, select {
+button,
+input,
+select {
     font-family: inherit;
     font-size: inherit;
     color: inherit;
@@ -101,8 +105,8 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: 
-        linear-gradient(90deg, rgba(8, 12, 18, 0.75) 0%, rgba(8, 12, 18, 0.4) 45%, rgba(8, 12, 18, 0.1) 100%), 
+    background-image:
+        linear-gradient(90deg, rgba(8, 12, 18, 0.75) 0%, rgba(8, 12, 18, 0.4) 45%, rgba(8, 12, 18, 0.1) 100%),
         url('assets/hero-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -203,7 +207,7 @@ ul {
     position: relative;
 }
 
-.nav-link:hover, 
+.nav-link:hover,
 .nav-link.active {
     color: var(--white);
 }
@@ -346,7 +350,8 @@ ul {
 .btn-white-capsule {
     background-color: var(--white);
     color: var(--dark-base);
-    padding: 0.5rem 0.625rem 0.5rem 1.25rem; /* Tighter padding for capsule structure */
+    padding: 0.5rem 0.625rem 0.5rem 1.25rem;
+    /* Tighter padding for capsule structure */
     box-shadow: var(--shadow-soft);
 }
 
@@ -430,7 +435,7 @@ ul {
 
 .hero-subheadline {
     font-size: 1.125rem;
-    color: var(--text-muted);
+    color: var(--text-light);
     max-width: 520px;
     line-height: 1.6;
 }
@@ -483,7 +488,8 @@ ul {
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-deep);
     overflow: hidden;
-    transition: transform 0.1s ease-out; /* Smooth transition for 3D card tilt */
+    transition: transform 0.1s ease-out;
+    /* Smooth transition for 3D card tilt */
 }
 
 /* Card Tabs */
@@ -532,8 +538,15 @@ ul {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(5px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-group {
@@ -669,8 +682,15 @@ select option {
 }
 
 @keyframes slideInDown {
-    from { transform: translateY(-4px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-4px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .btn-full {
@@ -1157,8 +1177,15 @@ select option {
 }
 
 @keyframes toastSlideIn {
-    from { transform: translateX(100%) translateY(0); opacity: 0; }
-    to { transform: translateX(0) translateY(0); opacity: 1; }
+    from {
+        transform: translateX(100%) translateY(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
 }
 
 .toast.fade-out {
@@ -1166,8 +1193,15 @@ select option {
 }
 
 @keyframes toastSlideOut {
-    from { transform: translateX(0) scale(1); opacity: 1; }
-    to { transform: translateX(30px) scale(0.9); opacity: 0; }
+    from {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(30px) scale(0.9);
+        opacity: 0;
+    }
 }
 
 .toast-message {
@@ -1189,43 +1223,43 @@ select option {
 /* Tablet / Medium screens (up to 1024px) */
 @media (max-width: 1024px) {
     .hero-wrapper {
-        background-image: 
-            linear-gradient(180deg, rgba(8, 12, 18, 0.95) 0%, rgba(8, 12, 18, 0.8) 50%, rgba(8, 12, 18, 0.95) 100%), 
+        background-image:
+            linear-gradient(180deg, rgba(8, 12, 18, 0.95) 0%, rgba(8, 12, 18, 0.8) 50%, rgba(8, 12, 18, 0.95) 100%),
             url('assets/hero-bg.jpg');
     }
-    
+
     .hero-main {
         padding-top: 7rem;
         padding-bottom: 5rem;
     }
-    
+
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .hero-left-content {
         text-align: center;
         align-items: center;
     }
-    
+
     .hero-subheadline {
         max-width: 600px;
     }
-    
+
     .hero-right-card {
         justify-content: center;
     }
-    
+
     .tracking-card {
         max-width: 500px;
     }
-    
+
     /* Mobile Navigation Drawer System */
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
     .nav-menu {
         position: fixed;
         top: 0;
@@ -1240,24 +1274,24 @@ select option {
         transition: var(--transition-normal);
         z-index: 99;
     }
-    
+
     .nav-menu.open {
         right: 0;
     }
-    
+
     .nav-list {
         flex-direction: column;
         align-items: flex-start;
         gap: 2rem;
         width: 100%;
     }
-    
+
     .nav-link {
         font-size: 1.125rem;
         width: 100%;
         justify-content: space-between;
     }
-    
+
     .dropdown-menu {
         position: static;
         transform: none;
@@ -1270,23 +1304,24 @@ select option {
         padding: 0.5rem 0 0 1rem;
         pointer-events: auto;
     }
-    
+
     .dropdown-menu.open {
         display: block;
     }
-    
+
     .nav-item-dropdown:hover .dropdown-menu {
         transform: none;
     }
-    
+
     .dropdown-chevron.rotated {
         transform: rotate(180deg);
     }
-    
+
     .header-actions {
-        display: none; /* Hide action buttons on mobile headers, place them in nav menu */
+        display: none;
+        /* Hide action buttons on mobile headers, place them in nav menu */
     }
-    
+
     .nav-menu .header-actions-mobile {
         display: flex;
         flex-direction: column;
@@ -1296,16 +1331,16 @@ select option {
         border-top: 1px solid var(--glass-border);
         padding-top: 2rem;
     }
-    
+
     /* Hamburger morph to X Close */
     .mobile-menu-toggle.open .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
-    
+
     .mobile-menu-toggle.open .bar:nth-child(2) {
         opacity: 0;
     }
-    
+
     .mobile-menu-toggle.open .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
@@ -1316,33 +1351,33 @@ select option {
     .container {
         padding: 0 1.25rem;
     }
-    
+
     .hero-headline {
         font-size: 2.25rem;
     }
-    
+
     .hero-subheadline {
         font-size: 1rem;
     }
-    
+
     .card-body {
         padding: 1.25rem;
     }
-    
+
     .app-badges {
         flex-direction: column;
     }
-    
+
     .card-footer {
         padding: 1.25rem;
     }
-    
+
     .form-row {
         flex-direction: column;
         gap: 1rem;
         margin-bottom: 0;
     }
-    
+
     .half-width {
         width: 100%;
     }
@@ -1416,7 +1451,8 @@ select option {
     align-items: center;
     justify-content: center;
     text-align: center;
-    opacity: 0; /* Controlled by GSAP */
+    opacity: 0;
+    /* Controlled by GSAP */
     pointer-events: none;
 }
 
@@ -1576,9 +1612,9 @@ select option {
     /* A radial fill rather than a flat one plus backdrop-filter: the flat
        version drew a hard rectangular seam across the video behind it. */
     background: radial-gradient(ellipse at center,
-        rgba(11, 17, 24, 0.55) 0%,
-        rgba(11, 17, 24, 0.34) 55%,
-        rgba(11, 17, 24, 0) 100%);
+            rgba(11, 17, 24, 0.55) 0%,
+            rgba(11, 17, 24, 0.34) 55%,
+            rgba(11, 17, 24, 0) 100%);
     border-radius: var(--radius-card);
 }
 
@@ -2049,6 +2085,7 @@ select option {
         font-size: 10rem;
     }
 }
+
 /* Footer Styles */
 .main-footer {
     background-color: var(--dark-base);
